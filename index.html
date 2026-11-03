@@ -20,7 +20,7 @@
   --anil:#9AA9F2; --anil-soft:#232B4A; --sol:#F0B456; --ok:#6FC08E; color-scheme:dark}
 
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
-.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px;display:flex;flex-direction:column;gap:36px}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px;display:flex;flex-direction:column;gap:36px}
 h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
 h1{font-size:clamp(2.3rem,8vw,3.4rem);font-weight:800;letter-spacing:-.02em}
 h2{font-size:1.5rem;font-weight:700}
@@ -245,7 +245,7 @@ ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:28px
 .g-item figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;font-size:.85rem;font-weight:600;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.65))}
 .g-sound{position:absolute;top:10px;right:10px;border:0;border-radius:99px;padding:6px 12px;font:600 .78rem var(--body);background:rgba(0,0,0,.55);color:#fff}
 .lightbox[hidden],#clima[hidden]{display:none}
-.wx-chip{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px 8px;align-self:flex-start;margin-top:4px;padding:6px 14px;border:1px solid var(--line);border-radius:99px;background:var(--surface);font-size:.88rem;color:var(--muted)}
+.wx-chip{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px 8px;align-self:flex-start;margin-top:2px;padding:6px 14px;border:1px solid var(--line);border-radius:99px;background:var(--surface);font-size:.88rem;color:var(--muted)}
 .wx-chip b{color:var(--ink);font-family:var(--display)}
 .wx-chip #wxD{color:var(--ink)}
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:grid;place-items:center;z-index:50;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px))}
@@ -345,9 +345,9 @@ footer{color:var(--muted);font-size:.85rem;text-align:center}
     <div class="lang" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" aria-pressed="true">ES</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
     <p class="eyebrow">Bienvenido a Sonzacate</p>
     <h1>Casa Loma Alta</h1>
+    <p class="wx-chip" id="clima" hidden><span id="wxIc" aria-hidden="true"></span><b id="wxT"></b><span id="wxD"></span></p>
     <p class="lead">Cómo usar la casa y qué hay cerca, en un solo lugar. Si algo no está aquí, escríbenos y te ayudamos.</p>
-      <p class="wx-chip" id="clima" hidden><span id="wxIc" aria-hidden="true"></span><b id="wxT"></b><span id="wxD"></span><span class="wx-dot">·</span><span id="wxR"></span></p>
-</header>
+  </header>
 
   <section id="llegar">
     <h2>Cómo llegar</h2>
@@ -910,7 +910,6 @@ function renderWx(){
   document.getElementById('wxIc').textContent=ic;
   document.getElementById('wxT').textContent=Math.round(s.current.temperature_2m)+'°';
   document.getElementById('wxD').textContent=LANG==='en'?den:des;
-  document.getElementById('wxR').textContent=p>=50?(LANG==='en'?'☂ Rain this afternoon':'☂ Llueve en la tarde'):(LANG==='en'?`Rain ${p}%`:`Lluvia ${p}%`);
   document.getElementById('clima').hidden=false;
 }
 (async()=>{ try{
